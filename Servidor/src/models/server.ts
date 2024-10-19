@@ -1,6 +1,8 @@
 import express, { Application } from 'express';
 import routesProduct from '../routes/product.routes';
 import routesUser from '../routes/user.routes';
+import { Product } from "./product";
+import { User } from "./user";
 
 class Server {
     private app: Application;
@@ -12,6 +14,7 @@ class Server {
         this.listen();
         this.midlewares();
         this.routes();
+        this.dbConnect();
     }
 
     listen() {
@@ -27,6 +30,16 @@ class Server {
 
     midlewares() {
         this.app.use(express.json());
+    }
+
+    async dbConnect() {
+        try {
+            await Product.sync();
+            await User.sync();
+            console.log("Conneccion a la base de datos con exito");
+        } catch (error) {
+            console.error("Error en la coneccion de la base de datos: ", error);
+        }
     }
 
 }
