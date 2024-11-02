@@ -4,9 +4,8 @@
             <div class="card-header text-center">{{ operacion }} Producto</div>
             <div class="card-body">
                 <form [formGroup]="form" (ngSubmit)="addProduct()">
-
                     <input type="text" class="form-control" placeholder="Ing nombre"><span
-                        *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched ">
+                        *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">
                         El campo nombre es <strong>requerido</strong>
                     </span>
 
