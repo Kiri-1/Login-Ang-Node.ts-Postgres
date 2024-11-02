@@ -1,1 +1,39 @@
-<p>add-edit-product works!</p>
+<div class="row m-2">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 25rem;">
+            <div class="card-header text-center">{{ operacion }} Producto</div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addProduct()">
+
+                    <input type="text" class="form-control" placeholder="Ing nombre"><span
+                        *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched ">
+                        El campo nombre es <strong>requerido</strong>
+                    </span>
+
+                    <input formControlName="description" type="text" class="form-control mt-2"
+                        placeholder="Ing descripcion"><span
+                        *ngIf="form.get('description')?.hasError('required')  && form.get('description')?.touched">
+                        El campo descripción es <strong>requerido</strong>
+                    </span>
+
+                    <input formControlName="price" type="text" class="form-control mt-2" placeholder="Ing precio"> <span
+                        *ngIf="form.get('price')?.hasError('required') && form.get('price')?.touched">
+                        El campo price es <strong>requerido</strong>
+                    </span>
+                    <span *ngIf="form.get('stock')?.hasError('required') && form.get('stock')?.touched">
+                        El campo stock es <strong>requerido</strong>
+                    </span>
+                    <input formControlName="stock" type="text" class="form-control mt-2" placeholder="Ing stock">
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-6">
+                            <button [disabled]="form.invalid" type="button"
+                                class="btn btn-outline-dark">Aceptar</button>
+                        </div>
+                        <div class="col-lg-6">
+                            <button routerLink="/dashboard" type="button" class="btn btn-outline-dark">Volver</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

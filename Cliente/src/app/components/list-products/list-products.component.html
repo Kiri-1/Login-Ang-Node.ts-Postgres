@@ -18,10 +18,10 @@
             <tr *ngFor="let item of listProducts" class="table-light">
                 <td>{{ item.name }}</td>
                 <td>{{ item.description }}</td>
-                <td>{{ item.price | currency}}</td>
+                <td>{{ item.price }}</td>
                 <td>{{ item.stock }}</td>
                 <td>
-                    <button type="button" class="btn btn-outline-info btn-sm">Editar</button>
+                    <button [routerLink]="['/edit', item.id]" type="button" class="btn btn-outline-info btn-sm">Editar</button>
                     <button type="button" class="btn btn-outline-danger btn-sm ms-4">Eliminar</button>
                 </td>
             </tr>
